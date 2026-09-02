@@ -250,6 +250,23 @@
     color: var(--verde);
     margin-top: 1.4rem;
 }
+  /* ---------- DRESS CODE: figuras (ella / él) ---------- */
+  .dresscode-wrap{
+    display:flex; flex-direction:column; align-items:center;
+    gap:2.2rem; margin-top:1rem;
+  }
+  .dresscode-figure{width:100%; max-width:150px;}
+  .dresscode-figure img{
+    display:block; width:70%; height:auto; object-fit:contain;
+  }
+  .dresscode-text{max-width:440px;}
+  @media (min-width:860px){
+    section.dresscode{max-width:1080px;}
+    .dresscode-wrap{
+      flex-direction:row; justify-content:center; align-items:center; gap:3.5rem;
+    }
+    .dresscode-figure{max-width:260px;}
+  }
  
   /* ---------- REGALOS ---------- */
   .gifts h2{color:var(--terracota); font-size:1.7rem;}
@@ -319,8 +336,8 @@
 <!-- ============ HERO ============ -->
 <section class="hero">
   <!-- FOTO_HERO: reemplaza "foto-hero.jpg" con tu fotografía (misma carpeta del repo) -->
-  <img class="hero-photo" src="https://images.unsplash.com/photo-1667290942551-3743113d22a4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" onerror="phImg(this)">
-  <svg class="corner tl" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5 C 30 5, 20 35, 45 30 C 65 26, 55 55, 80 50" stroke-width="1.4"/><path d="M20 12c8 3 8 12 2 16" stroke-width="1.2"/><path d="M40 22c8 3 8 12 2 16" stroke-width="1.2"/></svg>
+  <img class="hero-photo" src="https://images.unsplash.com/photo-1667290942551-3743113d22a4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Felices para siempre" onerror="phImg(this)">
+  <svg class="corner tl" viewBox="100 100 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5 C 30 5, 20 35, 45 30 C 65 26, 55 55, 80 50" stroke-width="1.4"/><path d="M20 12c8 3 8 12 2 16" stroke-width="1.2"/><path d="M40 22c8 3 8 12 2 16" stroke-width="1.2"/></svg>
   <p class="eyebrow reveal">Nos casamos</p>
 <h1 class="reveal">Daniel<span class="amp">&</span>Ana Julia</h1>
   <p class="date reveal">24 de Octubre de 2026</p>
@@ -383,13 +400,25 @@
 <!-- ============ DRESS CODE ============ -->
 <section class="dresscode reveal">
   <h2>Código de Vestimenta</h2>
-  <p class="code">Formal de día</p>
-  <p class="sug code2">Se sugiere vestido o coctel largo o ligero para ellas,&nbsp;
-    y traje para ellos.
-  </p>
-  <p class="code">&nbsp;</p>
-<p class="note">Nos encantaría ver  tonos otoñales reflejados 
-  en tu atuendo.  ¡ven listo para celebrar!</p>
+  <div class="dresscode-wrap">
+    <div class="dresscode-figure">
+      <!-- FOTO_VESTIMENTA_ELLA: reemplaza con tu imagen .png del estilo sugerido para ellas -->
+      <img src="https://congreso-gto.s3.amazonaws.com/uploads/archivo/archivo/20019/mujer.png" alt="vestido en tono terracota" class="dresscode-figure" onerror="phImg(this)">
+    </div>
+    <div class="dresscode-text">
+      <p class="code">Formal de día</p>
+      <p class="sug code2">Se sugiere vestido o coctel largo o ligero para ellas,&nbsp;
+        y traje para ellos.
+      </p>
+      <p class="note">Nos encantaría ver  tonos otoñales reflejados 
+        en tu atuendo. <br>
+¡ven listo para celebrar!</p>
+    </div>
+    <div class="dresscode-figure">
+      <!-- FOTO_VESTIMENTA_EL: reemplaza con tu imagen .png del estilo sugerido para ellos -->
+              <img src="https://congreso-gto.s3.amazonaws.com/uploads/archivo/archivo/20021/mujer2.png" alt="vestido en tono terracota" class="dresscode-figure" onerror="phImg(this)">
+    </div>
+  </div>
 </section>
  
 <!-- ============ GALERÍA ============ -->
