@@ -54,8 +54,8 @@ ALBERTO HERRERA
  
   section{
     position: relative;
-    padding: 6rem 1.5rem;
-    max-width: 640px;
+    padding: 4rem .5rem;
+    max-width: 540px;
     margin: 0 auto;
     text-align: center;
     font-size: 2px;
@@ -156,10 +156,10 @@ ALBERTO HERRERA
     color: var(--terracota);
   }
   .gallery{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:.7rem; max-width:900px; margin:2rem auto 1;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:.7rem; max-width:800px; margin:2rem auto 1;
   }
   .gallery img{
-    width:100%; aspect-ratio:1/1; object-fit:cover; border:2px solid var(--mostaza);
+    width:100%; aspect-ratio:1/1; object-fit:cover; border:3px solid var(--mostaza);
   }
   .gallery img:nth-child(2){margin-top:1.4rem;}
  
@@ -182,7 +182,7 @@ ALBERTO HERRERA
   .invite p{
     font-style: italic;
     color: var(--verde-osc);
-    line-height: 1.8;
+    line-height: 1.4;
 }
  
   /* ---------- EVENTOS ---------- */
@@ -225,7 +225,7 @@ ALBERTO HERRERA
   .btn.solid{background:var(--terracota); color:var(--crema);}
   .btn.solid:hover{background:var(--naranja); border-color:var(--naranja);}
  
-  /* ---------- DRESS CODE --------- */
+  /* ---------- DRESS CODE ---------- */
   .dresscode h2{color:var(--terracota); font-size:1.7rem;}
   .dresscode .code{
     font-family: var(--serif);
@@ -248,13 +248,13 @@ ALBERTO HERRERA
   }
   .dresscode-figure{width:100%; max-width:100px;}
   .dresscode-figure img{
-    display:block; width:70%; height:auto; object-fit:center;
+    display:block; width:70%; height:auto; object-fit:center; justify-content:center;
   }
   .dresscode-text{max-width:440px;}
   @media (min-width:860px){
     section.dresscode{max-width:1080px;}
     .dresscode-wrap{
-      flex-direction:row; justify-content:center; align-items:center; gap:2.5rem;
+      flex-direction:row; justify-content:center; align-items:center; gap:1.5rem;
     }
     .dresscode-figure{max-width:250px;}
   }
@@ -391,11 +391,13 @@ ALBERTO HERRERA
  
 <!-- ============ DRESS CODE ============ -->
 <section class="dresscode reveal">
-  <h2>Código de Vestimenta</h2>
+  <h2>Código de Vestimenta	</h2><br>
+      <!-- FOTO_VESTIMENTA_ELLA: reemplaza con tu imagen .png del estilo sugerido para ellas -->
+      <img src="https://github.com/danielyanajulia/nuestraboda/blob/main/mujer.png?raw=true" alt="">&nbsp; &nbsp;&nbsp;
+		 <img src="https://github.com/danielyanajulia/nuestraboda/blob/main/hombre.png?raw=true" alt="">
   <div class="dresscode-wrap">
     <div class="dresscode-figure">
       <!-- FOTO_VESTIMENTA_ELLA: reemplaza con tu imagen .png del estilo sugerido para ellas -->
-      <img src="https://raw.githubusercontent.com/danielyanajulia/nuestraboda/refs/heads/main/mujer.png" alt="vestido en tono terracota" class="dresscode-figure" onerror="phImg(this)">
     </div>
     <div class="dresscode-text">
       <p class="code">Formal de día</p>
@@ -407,8 +409,6 @@ ALBERTO HERRERA
 ¡ven listo para celebrar!</p>
     </div>
     <div class="dresscode-figure">
-      <!-- FOTO_VESTIMENTA_EL: reemplaza con tu imagen .png del estilo sugerido para ellos -->
-              <img src="https://github.com/danielyanajulia/nuestraboda/blob/main/hombre.png?raw=true" alt="vestido en tono terracota" class="dresscode-figure" onerror="phImg(this)">
     </div>
   </div>
 </section>
