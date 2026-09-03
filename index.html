@@ -1,539 +1,640 @@
-
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daniel & Ana Julia · 24 de Octubre 2026</title>
- 
-<!--
-ALBERTO HERRERA
--->
- 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
- 
-<style>
-  :root{
-    --verde: #3E4A40;
-    --verde-osc: #2d3f30;
-    --terracota: #B94F2A;
-    --naranja: #D2873F;
-    --mostaza: #E3A752;
-    --rosa: #D89485;
-    --crema: #F6EFE4;
-    --crema-osc: #ECE1CF;
-    --tinta: #2C2A24;
-    --serif: 'Playfair Display', serif;
-    --cuerpo: 'Cormorant Garamond', serif;
-    --script: 'Mrs Saint Delafield', cursive;
-  }
- 
-  *{box-sizing:border-box; margin:0; padding:0;}
- 
-  html{scroll-behavior:smooth;}
- 
-  body{
-    background:var(--crema);
-    color:var(--tinta);
-    font-family:var(--cuerpo);
-    font-family:var(--cuerpo)
-    font-size:19px;
-    line-height:1.6;
-    overflow-x:hidden;
-  }
- 
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:.01ms !important; transition-duration:.01ms !important;}
-  }
- 
-  h1,h2{font-family:var(--serif); font-weight:500; letter-spacing:.02em;}
- 
-  a{color:inherit; text-decoration:none;}
- 
-  section{
-    position: relative;
-    padding: 4rem .5rem;
-    max-width: 540px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 2px;
-  }
- 
-  /* ---------- Textura de fondo sutil ---------- */
-  .grain{
-    position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.035; mix-blend-mode:multiply;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
- 
-  /* ---------- Botón flotante de sonido ---------- */
-  #soundToggle{
-    position:fixed; bottom:1.5rem; right:1.5rem; z-index:50;
-    width:52px; height:52px; border-radius:50%;
-    border:1px solid var(--mostaza);
-    background:var(--crema);
-    color:var(--terracota);
-    font-family:var(--serif); font-size:1.1rem;
-    display:flex; align-items:center; justify-content:center;
-    cursor:pointer;
-    box-shadow:0 4px 14px rgba(43,42,36,.15);
-    transition:transform .3s ease, background .3s ease;
-  }
-  #soundToggle:hover{transform:scale(1.06);}
-  #soundToggle:focus-visible{outline:2px solid var(--terracota); outline-offset:3px;}
-  #soundToggle .bar{display:inline-block; width:3px; height:10px; margin:0 1px; background:var(--terracota); border-radius:2px;}
-  #soundToggle.playing .bar{animation:eq 0.9s ease-in-out infinite;}
-  #soundToggle.playing .bar:nth-child(2){animation-delay:.15s;}
-  #soundToggle.playing .bar:nth-child(3){animation-delay:.3s;}
-  @keyframes eq{0%,100%{height:6px;}50%{height:16px;}}
- 
-  /* ---------- Ornamento de hojas (elemento firma) ---------- */
-  .leaf-divider{width:120px; height:auto; margin:2.5rem auto; display:block; color:var(--terracota);}
-  .leaf-divider path{stroke:currentColor;}
- 
-  /* ---------- HERO ---------- */
-  .hero{
-    min-height:100svh;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    position:relative;
-    isolation:isolate;
-    max-width:none;
-    padding:2rem 1.5rem;
-    overflow:hidden;
-  }
-  .hero-photo{
-    position:absolute; inset:0; z-index:-2;
-    width:100%; height:100%; object-fit:cover;
-    filter:saturate(.9);
-  }
-  .hero::after{
-    content:"";
-    position:absolute; inset:0; z-index:-1;
-    background:
-      radial-gradient(ellipse at 50% -10%, rgba(211,138,90,.15), transparent 55%),
-      linear-gradient(180deg, rgba(246,239,228,.68) 0%, rgba(236,225,207,.86) 100%);
-  }
-  .hero .corner{position:absolute; width:90px; opacity:.8; color:var(--mostaza); z-index:1;}
-  .hero .corner.tl{top:2rem; left:2rem; transform:scaleX(-1);}
-  .hero .corner.br{bottom:2rem; right:2rem; transform:rotate(180deg) scaleX(-1);}
-  .eyebrow{
-    font-family:var(--cuerpo); font-style:italic; letter-spacing:.35em; text-transform:uppercase;
-    font-size:.85rem; color:var(--terracota); margin-bottom:1.2rem;
-  }
-  .hero h1{
-    font-size:clamp(2.6rem, 8vw, 4.4rem);
-    color:var(--verde-osc);
-    line-height:1.05;
-  }
-  .hero .amp{
-    font-family:var(--script); font-size:1.5em; color:var(--terracota); padding:0 .15em; vertical-align:-0.08em;
-  }
-  .hero .date{
-    margin-top: 1.6rem;
-    font-size: 2rem;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--verde);
-  }
-  .hero .scroll-cue{
-    margin-top:3.5rem; font-size:1.6rem; color:var(--terracota);
-    animation:bob 2.2s ease-in-out infinite;
-  }
-  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
- 
-  /* ---------- FOTOS (retrato y galería) ---------- */
-  .photo-frame{
-    max-width:520px; margin:0 auto; border:1px solid var(--mostaza); padding:10px; background:var(--crema);
-  }
-  .photo-frame img{
-    display:block; width:100%; aspect-ratio:4/5; object-fit:cover;
-  }
-  .photo-caption{
-    margin-top: 1rem;
-    font-family: var(--script);
-    font-size: 4rem;
-    color: var(--terracota);
-  }
-  .gallery{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:.7rem; max-width:800px; margin:2rem auto 1;
-  }
-  .gallery img{
-    width:100%; aspect-ratio:1/1; object-fit:cover; border:3px solid var(--mostaza);
-  }
-  .gallery img:nth-child(2){margin-top:1.4rem;}
- 
-  /* ---------- COUNTDOWN ---------- */
-  .countdown{background:var(--verde-osc); color:var(--crema); max-width:none; padding:5rem 1.5rem;}
-  .countdown .lead{
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 3.4rem;
-    color: var(--mostaza);
-    margin-bottom: 1.6rem;
-}
-  .timer{display:flex; justify-content:center; gap:clamp(1rem,4vw,2.6rem); flex-wrap:wrap;}
-  .timer div{display:flex; flex-direction:column; align-items:center;}
-  .timer span{font-family:var(--serif); font-size:clamp(2rem,6vw,2.8rem); color:var(--rosa);}
-  .timer label{font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; color:var(--crema-osc); margin-top:.3rem;}
-  .countdown .msg{margin-top:2rem; font-style:italic; color:var(--crema-osc);}
- 
-  /* ---------- INVITE TEXT ---------- */
-  .invite p{
-    font-style: italic;
-    color: var(--verde-osc);
-    line-height: 1.4;
-}
- 
-  /* ---------- EVENTOS ---------- */
-  .event{
-    background:var(--crema-osc);
-    border-radius:2px;
-    margin:2.5rem auto;
-    padding:3.2rem 2rem;
-    border-top:1px solid var(--mostaza);
-    border-bottom:1px solid var(--mostaza);
-  }
-  .event h2{font-size:1.7rem; color:var(--terracota); margin-bottom:.3rem;}
-  .event .place{
-    font-size: 2rem;
-    color: var(--verde-osc);
-    margin-top: .6rem;
-}
-  .event .addr{
-    color: var(--verde);
-    margin-top: .2rem;
-    font-size: 1.5rem;
-}
-  .event .hour{
-    margin-top: .9rem;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    font-size: 2rem;
-    color: var(--tinta);
-}
-  .btn{
-    display:inline-block; margin-top:1.6rem;
-    padding:.75rem 2rem;
-    border:1px solid var(--terracota);
-    color:var(--terracota);
-    font-size:.85rem; letter-spacing:.2em; text-transform:uppercase;
-    transition:background .3s ease, color .3s ease;
-  }
-  .btn:hover, .btn:focus-visible{background:var(--terracota); color:var(--crema);}
-  .btn:focus-visible{outline:2px solid var(--verde-osc); outline-offset:3px;}
-  .btn.solid{background:var(--terracota); color:var(--crema);}
-  .btn.solid:hover{background:var(--naranja); border-color:var(--naranja);}
- 
-  /* ---------- DRESS CODE ---------- */
-  .dresscode h2{color:var(--terracota); font-size:1.7rem;}
-  .dresscode .code{
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 2rem;
-    color: var(--verde-osc);
-    margin: 1rem 0 1.6rem;
-}
-  .palette-row{display:flex; justify-content:center; gap:.6rem; margin:1.6rem 0;}
-  .swatch{width:38px; height:38px; border-radius:50%; border:2px solid var(--crema);}
-  .dresscode .note{
-    font-size: 24px;
-    color: var(--verde);
-    margin-top: 1.4rem;
-}
-  /* ---------- DRESS CODE: figuras (ella / él) ---------- */
-  .dresscode-wrap{
-    display:flex; flex-direction:column; align-items:left;
-    gap:.2rem; margin-top:.0rem;
-  }
-  .dresscode-figure{width:100%; max-width:100px;}
-  .dresscode-figure img{
-    display:block; width:70%; height:auto; object-fit:center; justify-content:center;
-  }
-  .dresscode-text{max-width:440px;}
-  @media (min-width:860px){
-    section.dresscode{max-width:1080px;}
-    .dresscode-wrap{
-      flex-direction:row; justify-content:center; align-items:center; gap:1.5rem;
-    }
-    .dresscode-figure{max-width:250px;}
-  }
- 
-  /* ---------- REGALOS ---------- */
-  .gifts h2{color:var(--terracota); font-size:1.7rem;}
-  .gifts p{
-    margin-top: .8rem;
-    color: var(--verde-osc);
-    font-size: 24px;
-}
-  .gift-buttons{display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.8rem;}
- 
-  /* ---------- RSVP ---------- */
-  .rsvp{background:var(--verde-osc); color:var(--crema); max-width:none; padding:5.5rem 1.5rem;}
-  .rsvp h2{color:var(--rosa); font-size:2rem;}
-  .rsvp .names{
-    font-family: var(--script);
-    font-size: 3.8rem;
-    color: #FFFFFF;
-    color: #FFFFFF;
-    margin-top: 1.2rem;
-}
-  .rsvp p.sub{
-    margin-top: .6rem;
-    color: var(--crema-osc);
-    font-style: italic;
-    font-size: 24px;
-}
- 
-  /* ---------- FOOTER ---------- */
-  footer{
-    text-align: center;
-    padding: 3rem 1.5rem 4rem;
-    color: var(--verde);
-    font-size: 34px;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-}
- 
-  /* ---------- Reveal on scroll ---------- */
-  .reveal{
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity .9s ease, transform .9s ease;
-    font-size: 2rem;
-}
-  .reveal.in{opacity:1; transform:translateY(0);}
-.ad {
-    font-size: 1.5rem;
-}
-.code2 {
-}
-.sug {
-    font-size: 1.5rem;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel & Ana Julia · 24 de Octubre 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+    <style>
+        /* Reset y variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --verde: #3E4A40;
+            --verde-claro: #5A6B5C;
+            --crema: #F6EFE4;
+            --crema-osc: #ECE1CF;
+            --terracota: #B94F2A;
+            --naranja: #D2873F;
+            --mostaza: #E3A752;
+            --tinta: #2C2A24;
+            --serif: 'Playfair Display', serif;
+            --cuerpo: 'Cormorant Garamond', serif;
+            --script: 'Mrs Saint Delafield', cursive;
+        }
+        body {
+            font-family: var(--cuerpo);
+            background-color: var(--crema);
+            color: var(--tinta);
+            line-height: 1.7;
+            font-size: 20px;
+        }
+        h1, h2, h3 {
+            font-family: var(--serif);
+            font-weight: 500;
+        }
+        .contenedor {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .separador {
+            width: 80px;
+            height: 2px;
+            background-color: var(--mostaza);
+            margin: 2rem auto;
+        }
+        .texto-italico {
+            font-style: italic;
+            color: var(--verde-claro);
+        }
+        .firma {
+            font-family: var(--script);
+            font-size: 3rem;
+            color: var(--terracota);
+        }
+
+        /* Textura de papel (efecto de grano) */
+        .textura-papel {
+            position: relative;
+            background-color: #fcf9f5;
+            text-align: center;
+        }
+        .textura-papel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.06;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 300px 300px;
+            mix-blend-mode: multiply;
+            border-radius: inherit;
+        }
+        .textura-papel > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: linear-gradient(180deg, rgba(246,239,228,0.7) 0%, rgba(236,225,207,0.9) 100%), url('https://images.unsplash.com/photo-1667290942551-3743113d22a4?q=80&w=1740&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 10vw, 5rem);
+            color: var(--verde);
+            line-height: 1.1;
+        }
+        .hero .amp {
+            font-family: var(--script);
+            font-size: 1.4em;
+            color: var(--terracota);
+        }
+        .hero .fecha {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--verde-claro);
+            margin-top: 0.5rem;
+        }
+        .hero .subtitulo {
+            font-style: italic;
+            color: var(--terracota);
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        /* Tarjetas de evento con textura */
+        .tarjeta-evento {
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--crema-osc);
+            text-align: center;
+        }
+        .tarjeta-evento h2 {
+            color: var(--terracota);
+            font-size: 1.8rem;
+            margin-bottom: 0.2rem;
+        }
+        .tarjeta-evento .lugar {
+            font-size: 1.5rem;
+            color: var(--verde);
+            font-weight: 600;
+        }
+        .tarjeta-evento .direccion {
+            color: var(--verde-claro);
+            font-size: 1.1rem;
+        }
+        .tarjeta-evento .hora {
+            font-family: var(--serif);
+            font-size: 1.3rem;
+            color: var(--tinta);
+            margin: 0.8rem 0 1.2rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 2rem;
+            border: 1px solid var(--terracota);
+            color: var(--terracota);
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+            font-weight: 600;
+            background: transparent;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: var(--terracota);
+            color: white;
+        }
+        .btn-verde {
+            border-color: var(--verde);
+            color: var(--verde);
+        }
+        .btn-verde:hover {
+            background: var(--verde);
+            color: white;
+        }
+        .btn-mostaza {
+            border-color: var(--mostaza);
+            color: var(--mostaza);
+        }
+        .btn-mostaza:hover {
+            background: var(--mostaza);
+            color: white;
+        }
+
+        /* Countdown */
+        .countdown {
+            background: var(--verde);
+            color: var(--crema);
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+        .countdown .lead {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-style: italic;
+            color: var(--mostaza);
+        }
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        .timer div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .timer span {
+            font-family: var(--serif);
+            font-size: 2.8rem;
+            color: var(--crema);
+            line-height: 1;
+        }
+        .timer label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--crema-osc);
+            margin-top: 0.3rem;
+        }
+
+        /* Dress code */
+        .dress-code-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        .dress-code-grid img {
+            max-width: 120px;
+            height: auto;
+        }
+        .paleta-colores {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 1.2rem 0;
+        }
+        .color-muestra {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Galería */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin: 2rem 0;
+        }
+        .galeria img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        /* Itinerario */
+        .itinerario-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            padding: 1rem 0;
+            border-bottom: 1px dashed var(--crema-osc);
+            flex-wrap: wrap;
+        }
+        .itinerario-item:last-child {
+            border-bottom: none;
+        }
+        .itinerario-hora {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            color: var(--terracota);
+            min-width: 80px;
+            font-weight: 600;
+        }
+        .itinerario-desc {
+            text-align: center;
+        }
+        .itinerario-desc strong {
+            color: var(--verde);
+        }
+
+        /* Hospedaje */
+        .hotel-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--crema-osc);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .hotel-card h3 {
+            color: var(--verde);
+            font-size: 1.3rem;
+        }
+        .hotel-card .hotel-dir {
+            color: var(--verde-claro);
+            font-size: 1.3rem;
+        }
+        .hotel-card .hotel-codigo {
+            font-family: var(--serif);
+            color: var(--terracota);
+            font-size: 1.1rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Padrinos */
+        .padrinos-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        .padrino {
+            text-align: center;
+        }
+        .padrino .nombre {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            color: var(--verde);
+        }
+        .padrino .rol {
+            font-size: 0.9rem;
+            color: var(--verde-claro);
+            font-style: italic;
+        }
+
+        /* Regalos - datos bancarios */
+        .datos-bancarios {
+            background: var(--crema-osc);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .datos-bancarios p {
+            margin-bottom: 0.3rem;
+        }
+        .datos-bancarios strong {
+            color: var(--verde);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--verde);
+            font-size: 1.2rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-top: 1px solid var(--crema-osc);
+        }
+
+        /* Utilería */
+        .img-redonda {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            display: block;
+            border: 4px solid var(--crema-osc);
+        }
+        .mb-2 { margin-bottom: 2rem; }
+        .mt-2 { margin-top: 2rem; }
+        .grain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: .035;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        /* Botón de sonido */
+        #soundToggle {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 50;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid var(--mostaza);
+            background: var(--crema);
+            color: var(--terracota);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(43,42,36,.15);
+        }
+        #soundToggle .bar {
+            display: inline-block;
+            width: 3px;
+            height: 10px;
+            margin: 0 1px;
+            background: var(--terracota);
+            border-radius: 2px;
+        }
+        #soundToggle.playing .bar {
+            animation: eq 0.9s ease-in-out infinite;
+        }
+        #soundToggle.playing .bar:nth-child(2) { animation-delay: .15s; }
+        #soundToggle.playing .bar:nth-child(3) { animation-delay: .3s; }
+        @keyframes eq { 0%,100%{height:6px;} 50%{height:16px;} }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .itinerario-item {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+            .itinerario-hora {
+                min-width: auto;
+            }
+        }
+    </style>
 </head>
 <body>
- 
-<div class="grain"></div>
- 
-<!-- Audio de fondo: coloca el archivo mp3 junto a este HTML en tu repositorio -->
-<audio id="bgm" loop preload="none">
-  <source src="https://congreso-gto.s3.amazonaws.com/uploads/archivo/archivo/20012/11%20Siente%20la%20tierra.mp3" type="audio/mpeg">
-</audio>
-<button id="soundToggle" aria-label="Reproducir música" aria-pressed="true">
-  <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-</button>
- 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <!-- FOTO_HERO: reemplaza "foto-hero.jpg" con tu fotografía (misma carpeta del repo) -->
-  <img class="hero-photo" src="https://images.unsplash.com/photo-1667290942551-3743113d22a4?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Felices para siempre" onerror="phImg(this)">
-  <svg class="corner tl" viewBox="100 100 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5 C 30 5, 20 35, 45 30 C 65 26, 55 55, 80 50" stroke-width="1.4"/><path d="M20 12c8 3 8 12 2 16" stroke-width="1.2"/><path d="M40 22c8 3 8 12 2 16" stroke-width="1.2"/></svg>
-  <p class="eyebrow reveal">Nos casamos</p>
-<h1 class="reveal">Daniel<span class="amp">&</span>Ana Julia</h1>
-  <p class="date reveal">24 de Octubre de 2026</p>
-  <div class="scroll-cue" aria-hidden="true">↓</div>
-  <svg class="corner br" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 5 C 30 5, 20 35, 45 30 C 65 26, 55 55, 80 50" stroke-width="1.4"/><path d="M20 12c8 3 8 12 2 16" stroke-width="2.2"/><path d="M40 22c8 3 8 12 2 16" stroke-width="1.2"/></svg>
-</section>
- 
-<!-- ============ COUNTDOWN ============ -->
-<section class="countdown">
-  <p class="lead reveal">Faltan</p>
-  <div class="timer reveal">
-    <div><span id="days">00</span><label>Días</label></div>
-    <div><span id="hours">00</span><label>Horas</label></div>
-    <div><span id="mins">00</span><label>Minutos</label></div>
-    <div><span id="secs">00</span><label>Segundos</label></div>
-  </div>
-  <p class="msg reveal">¡Para nuestro gran día!</p>
-</section>
- 
-<!-- ============ INVITACIÓN ============ -->
-<section class="invite">
-<img src="https://congreso-gto.s3.amazonaws.com/uploads/archivo/archivo/20013/fili.svg" alt="Ana Julia y Daniel" width="300">
+    <div class="grain"></div>
 
-  <p class="reveal">&nbsp;</p>
-  <p class="reveal">Con la bendición de Dios y de nuestras familias, queremos invitarte&nbsp;a celebrar con nosotros el inicio de esta nueva etapa.  &nbsp;Tu presencia hará este día aún más especial.</p>
+    <!-- Audio de fondo -->
+    <audio id="bgm" loop preload="none">
+        <source src="https://congreso-gto.s3.amazonaws.com/uploads/archivo/archivo/20012/11%20Siente%20la%20tierra.mp3" type="audio/mpeg">
+    </audio>
+    <button id="soundToggle" aria-label="Reproducir música">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
 
-</section>
- 
-<!-- ============ FOTO DE LA PAREJA ============ -->
-<section class="couple-photo reveal">
-  <div class="photo-frame">
-    <!-- FOTO_PAREJA: reemplaza "foto-pareja.jpg" con su fotografía -->
-    <img src="https://images.unsplash.com/photo-1506014299253-3725319c0f69?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ana Julia y Daniel" onerror="phImg(this)">
-  </div>
-  <p class="photo-caption">Daniel&nbsp; &amp; Ana Julia</p>
-</section>
- 
-<!-- ============ CEREMONIA ============ -->
-<section class="event reveal">
-  <h2>Ceremonia Religiosa</h2>
-  <p class="place">Parroquia del Sagrado Corazón de Jesús</p>
-  <p class="addr">Blvd. Árbol Grande, Salamanca, Gto.</p>
-  <p class="hour">13:00 horas</p>
-  <p class="ad">Se sugiere llegar 10 minutos antes&nbsp;&nbsp;</p>
-  <!-- MAPS_CEREMONIA: reemplaza el # por el link real de Google Maps -->
-  <a class="btn" href="https://www.google.com/maps/place/Parroquia+del+Sagrado+Corazón+de+Jesús/@20.580984,-101.1920664,343m/data=!3m1!1e3!4m6!3m5!1s0x842c851c6d3da9c7:0x9eeaa3bdfe0f2be6!8m2!3d20.5807581!4d-101.1917218!16s/g/12j86h5tr?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw==" target="_blank" rel="noopener">Ver Ubicación</a>
-</section>
- 
-<!-- ============ RECEPCIÓN ============ -->
-<section class="event reveal">
-  <h2>Recepción</h2>
-  <p class="place">Salón La Granja</p>
-  <p class="addr">Calle Morelos No. 2000, Col. Arboledas,</p>
-  <p class="addr">Salamanca, Gto.&nbsp;</p>
-<p class="hour">14:30 horas</p>
-  <!-- MAPS_RECEPCION: reemplaza el # por el link real de Google Maps -->
-  <a class="btn" href="https://maps.app.goo.gl/L1AQ6MY9jHZMwX3H7" target="_blank" rel="noopener">Ver Ubicación</a>
-</section>
- 
-<!-- ============ DRESS CODE ============ -->
-<section class="dresscode reveal">
-  <h2>Código de Vestimenta	</h2><br>
-      <!-- FOTO_VESTIMENTA_ELLA: reemplaza con tu imagen .png del estilo sugerido para ellas -->
-      <img src="https://github.com/danielyanajulia/nuestraboda/blob/main/mujer.png?raw=true" alt="">&nbsp; &nbsp;&nbsp;
-		 <img src="https://github.com/danielyanajulia/nuestraboda/blob/main/hombre.png?raw=true" alt="">
-  <div class="dresscode-wrap">
-    <div class="dresscode-figure">
-      <!-- FOTO_VESTIMENTA_ELLA: reemplaza con tu imagen .png del estilo sugerido para ellas -->
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <p class="subtitulo">Nos casamos</p>
+        <h1>Daniel <span class="amp">&amp;</span> Ana Julia</h1>
+        <p class="fecha">24 de Octubre de 2026</p>
+    </section>
+
+    <!-- ========== COUNTDOWN ========== -->
+    <section class="countdown">
+        <p class="lead">Faltan</p>
+        <div class="timer">
+            <div><span id="days">00</span><label>Días</label></div>
+            <div><span id="hours">00</span><label>Horas</label></div>
+            <div><span id="mins">00</span><label>Minutos</label></div>
+            <div><span id="secs">00</span><label>Segundos</label></div>
+        </div>
+        <p class="texto-italico" style="color: var(--crema-osc);">¡Para nuestro gran día!</p>
+    </section>
+
+    <!-- ========== INVITACIÓN ========== -->
+    <div class="contenedor text-center">
+        <img src="https://congreso-gto.s3.amazonaws.com/uploads/archivo/archivo/20013/fili.svg" alt="Daniel y Ana Julia" style="max-width: 200px; margin: 1rem auto;">
+        <p class="texto-italico" style="font-size: 1.3rem;">Con la bendición de Dios y de nuestras familias, queremos invitarte a celebrar con nosotros el inicio de esta nueva etapa. Tu presencia hará este día aún más especial.</p>
     </div>
-    <div class="dresscode-text">
-      <p class="code">Formal de día</p>
-      <p class="sug code2">Se sugiere vestido de cóctel largo o ligero para ellas,&nbsp;
-        y traje para ellos.
-      </p>
-      <p class="note">Nos encantaría ver  tonos otoñales reflejados 
-        en tu atuendo. <br>
-¡ven listo para celebrar!</p>
-    </div>
-    <div class="dresscode-figure">
-    </div>
-  </div>
-</section>
- 
-<!-- ============ GALERÍA ============ -->
-<section class="gallery-section reveal">
-<img src="https://congreso-gto.s3.amazonaws.com/uploads/archivo/archivo/20013/fili.svg" alt="Ana Julia y Daniel" width="300">
 
-  <h3>&nbsp;</h3>
-  <h2>Nuestros Momentos</h2>
-<div class="gallery">
-    <!-- FOTO_GALERIA_1/2/3: reemplaza estos tres archivos con sus fotos -->
-    <img src="https://images.unsplash.com/photo-1615966650071-855b15f29ad1?q=80&w=1866&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" onerror="phImg(this)">
-    <img src="https://plus.unsplash.com/premium_photo-1700353612860-bd8ab8d71f05?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" onerror="phImg(this)">
-    <img src="https://plus.unsplash.com/premium_photo-1673884220137-787a1e8ed1ba?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" onerror="phImg(this)">
-  </div>
-</section>
- 
-<!-- ============ REGALOS ============ -->
-<section class="gifts reveal">
-<img src="https://congreso-gto.s3.amazonaws.com/uploads/archivo/archivo/20015/fili2.svg" alt="Ana Julia y Daniel" width="300">
-  <h2>&nbsp;</h2>
-	
-  <h2>Sugerencia de Regalos</h2>
-  <p>Tu presencia es el mejor regalo que podríamos recibir.</p>
-  <p>Sin embargo, si deseas obsequiarnos algo, 
-  aquí tienes nuestras mesas de regalos:</p>
-<div class="gift-buttons">
-    <!-- LIVERPOOL_URL: reemplaza el número de la lista cuando lo tengas -->
-    <a class="btn solid" href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/60028580" target="_blank" rel="noopener">Liverpool</a>
+    <!-- ========== FOTO PAREJA ========== -->
+    <div class="contenedor text-center">
+        <div style="max-width: 500px; margin: 0 auto; border: 1px solid var(--mostaza); padding: 8px; background: white;">
+            <img src="https://images.unsplash.com/photo-1506014299253-3725319c0f69?q=80&w=687&auto=format&fit=crop" alt="Ana Julia y Daniel" style="width:100%; aspect-ratio:4/5; object-fit:cover; display:block;">
+        </div>
+        <p class="firma" style="margin-top: 0.5rem;">Daniel &amp; Ana Julia</p>
+    </div>
 
-  </div>
-</section>
- 
-<!-- ============ RSVP ============ -->
-<section class="rsvp reveal">
-  <h2>Confirma tu Asistencia</h2>
-  <p class="names">Con amor, Daniel&nbsp; &amp; Ana Julia</p>
-  <p class="sub">Esperamos compartir este día tan especial contigo</p>
-  <!-- RSVP_FORM_URL: pega aquí tu link de Google Form -->
-  <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeCDoETEmrNW03CP4oP8P782O4C1y3L8jbdSaaAcJS2N08YPA/viewform?usp=header" target="_blank" rel="noopener" style="margin-top:2rem; border-color:var(--mostaza); color:var(--mostaza);">Confirmar Asistencia</a>
-</section>
- 
-<footer style="font-size: 24px">
-Daniel &amp; Ana Julia · 24 · 10 · 2026 </footer>
- 
-<script>
-  // ---------- Placeholder de fotos ----------
-  // Se activa automáticamente (onerror) mientras el archivo de foto real
-  // no exista todavía en la carpeta. En cuanto subas "foto-hero.jpg",
-  // "foto-pareja.jpg", "foto-galeria-1.jpg", etc., esto deja de usarse.
-  function phImg(el){
-    const svg = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
-        <rect width="400" height="500" fill="#ECE1CF"/>
-        <rect x="14" y="14" width="372" height="472" fill="none" stroke="#D2873F" stroke-width="2" stroke-dasharray="6 8"/>
-        <g transform="translate(200,225)" fill="none" stroke="#B94F2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="-45" y="-30" width="90" height="66" rx="4"/>
-          <path d="M-18 -30 l8 -14 h20 l8 14"/>
-          <circle cx="0" cy="4" r="20"/>
-          <circle cx="0" cy="4" r="8"/>
-        </g>
-        <text x="200" y="300" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="17" fill="#3E4A40">Sustituye esta imagen</text>
-      </svg>`;
-    el.onerror = null;
-    el.src = "data:image/svg+xml;utf8," + encodeURIComponent(svg);
-  }
- 
-  // ---------- Countdown ----------
-  // WEDDING_DATETIME: fecha/hora objetivo (ceremonia)
-  const WEDDING_DATETIME = new Date("2026-10-24T13:00:00-06:00").getTime();
- 
-  function pad(n){ return String(n).padStart(2,'0'); }
- 
-  function tick(){
-    const now = Date.now();
-    const diff = Math.max(0, WEDDING_DATETIME - now);
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('days').textContent = pad(d);
-    document.getElementById('hours').textContent = pad(h);
-    document.getElementById('mins').textContent = pad(m);
-    document.getElementById('secs').textContent = pad(s);
-  }
-  tick();
-  setInterval(tick, 1000);
- 
-  // ---------- Sound toggle ----------
-  const bgm = document.getElementById('bgm');
-  const soundBtn = document.getElementById('soundToggle');
-  let playing = false;
-  soundBtn.addEventListener('click', () => {
-    if(!playing){
-      bgm.play().catch(()=>{});
-      soundBtn.classList.add('playing');
-      soundBtn.setAttribute('aria-pressed','true');
-      soundBtn.setAttribute('aria-label','Pausar música');
-    } else {
-      bgm.pause();
-      soundBtn.classList.remove('playing');
-      soundBtn.setAttribute('aria-pressed','false');
-      soundBtn.setAttribute('aria-label','Reproducir música');
-    }
-    playing = !playing;
-  });
- 
-  // ---------- Reveal on scroll ----------
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const revealEls = document.querySelectorAll('.reveal');
-  if(prefersReduced){
-    revealEls.forEach(el => el.classList.add('in'));
-  } else {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
+    <!-- ========== EVENTOS CON TEXTURA DE PAPEL ========== -->
+    <div class="contenedor">
+        <!-- Ceremonia -->
+        <div class="tarjeta-evento textura-papel">
+            <h2>Ceremonia Religiosa</h2>
+            <p class="lugar">Parroquia del Sagrado Corazón de Jesús</p>
+            <p class="direccion">Blvd. Árbol Grande, Salamanca, Gto.</p>
+            <p class="hora">13:00 horas</p>
+            <a class="btn" href="https://www.google.com/maps/place/Parroquia+del+Sagrado+Corazón+de+Jesús/@20.580984,-101.1920664,343m/data=!3m1!1e3!4m6!3m5!1s0x842c851c6d3da9c7:0x9eeaa3bdfe0f2be6!8m2!3d20.5807581!4d-101.1917218" target="_blank">Ver Ubicación</a>
+        </div>
+
+        <!-- Recepción -->
+        <div class="tarjeta-evento textura-papel">
+            <h2>Recepción</h2>
+            <p class="lugar">Salón La Granja</p>
+            <p class="direccion">Calle Morelos No. 2000, Col. Arboledas, Salamanca, Gto.</p>
+            <p class="hora">14:30 horas</p>
+            <a class="btn" href="https://maps.app.goo.gl/L1AQ6MY9jHZMwX3H7" target="_blank">Ver Ubicación</a>
+        </div>
+    </div>
+
+    <!-- ========== DRESS CODE ========== -->
+    <div class="contenedor text-center">
+        <div class="separador"></div>
+        <h2 style="color: var(--terracota); font-size: 1.8rem;">Código de Vestimenta</h2>
+        <p style="font-family: var(--serif); font-size: 1.6rem; font-style: italic; color: var(--verde);">Formal de día</p>
+        <div class="dress-code-grid">
+            <img src="https://github.com/danielyanajulia/nuestraboda/blob/main/mujer.png?raw=true" alt="Estilo mujer">
+            <img src="https://github.com/danielyanajulia/nuestraboda/blob/main/hombre.png?raw=true" alt="Estilo hombre">
+        </div>
+        <p>Se sugiere vestido de cóctel largo o ligero para ellas, y traje para ellos.</p>
+        <p class="texto-italico">Nos encantaría ver tonos otoñales reflejados en tu atuendo. ¡Ven listo para celebrar!</p>
+    </div>
+
+    <!-- ========== HOSPEDAJE RECOMENDADO ========== -->
+    <div class="contenedor text-center">
+        <div class="separador"></div>
+        <h2 style="color: var(--terracota);">Hospedaje Recomendado</h2>
+        <p class="texto-italico">Te dejamos unas sugerencias para que tengas una estadía placentera.</p>
+
+        <div class="textura-papel" style="padding: 1.5rem; border-radius: 8px; background: #fcf9f5; border: 1px solid var(--crema-osc); margin-top: 1.5rem;">
+            <div class="hotel-card" style="background: transparent; border: none; padding: 0 0 1.5rem 0; border-bottom: 1px solid var(--crema-osc);">
+                <h3>HOTEL BEL AIR</h3>
+                <p class="hotel-dir">Avenida Faja de Oro No. 1129, Salamanca, Guanajuato, México, C.P. 36470</p>
+                <p class="hotel-dir">IMPORTANTE: <br>
+                Le solicitamos hacer su reservación previamente para respetar su tarifa especial con el codigo de reservacion directamente a los teléfonos: <br>
+                Tel: 464 64 7 03 59 WhatsApp: 464 188 44 22 <br>
+                Email: reservaciones@babsalamanca.com</p>
+                <p class="hotel-codigo">Código invitación: <strong>BODAANAJULIA</strong></p>
+                <a class="btn btn-verde" href="https://www.google.com/maps/place/Hotel+BelAir+Business+Salamanca,+Trademark+by+Wyndham/@20.7819077,-101.39447,61105m/data=!3m2!1e3!5s0x842c85ab7795aa83:0x9244e1fb423b3003!4m13!1m2!2m1!1sA+v+.+F+a+j+a+d+e+O+r+o+N+o+1+1+2+9+,+S+a+l+a+m+a+n+c+a+,+G+u+a+n+a+j+u+a+t+o+,+M+é+x+i+c+o+.+C+.+P.+3+6+4+7+0!3m9!1s0x842c85ab79daef7d:0xd263ed2d42b423ad!5m2!4m1!1i2!8m2!3d20.5817642!4d-101.2120666!15sCm9BIHYgLiBGIGEgaiBhIGQgZSBPIHIgbyBOIG8gMSAxIDIgOSAsIFMgYSBsIGEgbSBhIG4gYyBhICwgRyB1IGEgbiBhIGogdSBhIHQgbyAsIE0gw6kgeCBpIGMgbyAuIEMgLiBQLiAzIDYgNCA3IDBaTSJLYSB2IGYgYWphZGUgbyBybyBuIG8gMSAxIDIgOSBzIGFsYW1hbmNhIGcgdWFuYWp1YXRvIG0gw6kgeGljbyBjIHAgMyA2IDQgNyAwkgEFaG90ZWyaAURDaTlEUVVsUlFVTnZaRU5vZEhsalJqbHZUMjEzTW1OVk5IUlJNSEJYVWtSU2QwNUViRnBqUmxwc1lsWmtlRlZ0WXhBQuABAPoBBAgAEEo!16s/g/1td4q0dt?entry=ttu&g_ep=EgoyMDI2MDkwMS4wIKXMDSoASAFQAw==" target="_blank" style="margin-top: 0.5rem;">Visitar sitio</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========== GALERÍA ========== -->
+    <div class="contenedor text-center">
+        <div class="separador"></div>
+        <h2 style="color: var(--terracota);">Nuestros Momentos</h2>
+        <div class="galeria">
+            <img src="https://images.unsplash.com/photo-1615966650071-855b15f29ad1?q=80&w=1866&auto=format&fit=crop" alt="Momento 1">
+            <img src="https://plus.unsplash.com/premium_photo-1700353612860-bd8ab8d71f05?q=80&w=1740&auto=format&fit=crop" alt="Momento 2">
+            <img src="https://plus.unsplash.com/premium_photo-1673884220137-787a1e8ed1ba?q=80&w=688&auto=format&fit=crop" alt="Momento 3">
+        </div>
+        <img src="https://congreso-gto.s3.amazonaws.com/uploads/archivo/archivo/20015/fili2.svg" alt="Firma" style="max-width: 150px; margin: 1rem auto;">
+    </div>
+
+    <!-- ========== PADRINOS ========== -->
+    <div class="contenedor text-center">
+        <div class="separador"></div>
+        <h2 style="color: var(--terracota);">Padres &amp; Padrinos</h2>
+        <p class="texto-italico">¡Gracias por acompañarnos en este día tan especial!</p>
+
+        <div class="textura-papel" style="padding: 2rem 1.5rem; border-radius: 8px; background: #fcf9f5; border: 1px solid var(--crema-osc); margin-top: 1.5rem;">
+            <div class="padrinos-grid">
+                <div class="padrino">
+                    <div class="nombre">María &amp; José</div>
+                    <div class="rol">Padres de la Novia</div>
+                </div>
+                <div class="padrino">
+                    <div class="nombre">Carmen &amp; Juan</div>
+                    <div class="rol">Padres del Novio</div>
+                </div>
+                <div class="padrino">
+                    <div class="nombre">Laura &amp; Carlos</div>
+                    <div class="rol">Padrinos de Boda</div>
+                </div>
+                <div class="padrino">
+                    <div class="nombre">Patricia &amp; Roberto</div>
+                    <div class="rol">Padrinos de Velación</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== REGALOS ========== -->
+    <div class="contenedor text-center">
+        <div class="separador"></div>
+        <h2 style="color: var(--terracota);">Sugerencia de Regalos</h2>
+        <p>El mejor regalo es tu compañía,<br>si deseas tener un detalle con nosotros, podrás encontrar opciones en nuestra mesa de regalos.</p>
+
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin: 1.5rem 0;">
+            <a class="btn" href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/60028580" target="_blank">Liverpool</a>
+        </div>
+
+        <div class="textura-papel" style="padding: 1.5rem; border-radius: 8px; background: #fcf9f5; border: 1px solid var(--crema-osc);">
+            <h3 style="color: var(--verde); font-family: var(--serif); font-size: 1.3rem; margin-bottom: 0.5rem;">Datos bancarios</h3>
+            <div class="datos-bancarios" style="background: transparent; padding: 0;">
+                <p><strong>Banco:</strong> Banco del Valle</p>
+                <p><strong>Titular:</strong> Ana Julia Herrera</p>
+                <p><strong>CLABE:</strong> 789 123 456 000 987 654</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== RSVP ========== -->
+    <div style="background: var(--verde); color: var(--crema); padding: 3rem 1.5rem; text-align: center;">
+        <h2 style="color: var(--mostaza); font-size: 2rem;">Confirma tu Asistencia</h2>
+        <p class="firma" style="color: white;">Con amor, Daniel &amp; Ana Julia</p>
+        <p style="font-style: italic; color: var(--crema-osc); margin-bottom: 1.5rem;">Esperamos compartir este día tan especial contigo</p>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeCDoETEmrNW03CP4oP8P782O4C1y3L8jbdSaaAcJS2N08YPA/viewform" target="_blank" style="border-color: var(--mostaza); color: var(--mostaza);">Confirmar Asistencia</a>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        Daniel &amp; Ana Julia · 24 · 10 · 2026
+    </footer>
+
+    <script>
+        // Countdown
+        const WEDDING_DATETIME = new Date("2026-10-24T13:00:00-06:00").getTime();
+        function pad(n){ return String(n).padStart(2,'0'); }
+        function tick(){
+            const now = Date.now();
+            const diff = Math.max(0, WEDDING_DATETIME - now);
+            document.getElementById('days').textContent = pad(Math.floor(diff / 86400000));
+            document.getElementById('hours').textContent = pad(Math.floor((diff % 86400000) / 3600000));
+            document.getElementById('mins').textContent = pad(Math.floor((diff % 3600000) / 60000));
+            document.getElementById('secs').textContent = pad(Math.floor((diff % 60000) / 1000));
         }
-      });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => io.observe(el));
-  }
-</script>
- 
+        tick();
+        setInterval(tick, 1000);
+
+        // Sound toggle
+        const bgm = document.getElementById('bgm');
+        const soundBtn = document.getElementById('soundToggle');
+        let playing = false;
+        soundBtn.addEventListener('click', () => {
+            if(!playing) {
+                bgm.play().catch(()=>{});
+                soundBtn.classList.add('playing');
+            } else {
+                bgm.pause();
+                soundBtn.classList.remove('playing');
+            }
+            playing = !playing;
+        });
+    </script>
 </body>
 </html>
